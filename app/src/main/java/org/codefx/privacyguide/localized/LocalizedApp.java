@@ -19,6 +19,10 @@ public class LocalizedApp {
 		return app.getName();
 	}
 
+	public String getDescription() {
+		return app.getDescription();
+	}
+
 	public LocalizedAppState getState() {
 		return state;
 	}

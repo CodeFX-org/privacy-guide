@@ -99,6 +99,9 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 		private void writeAppToView(LocalizedApp app, View appView) {
 			TextView appNameView = (TextView) appView.findViewById(R.id.appName);
 			appNameView.setText(app.getName());
+
+			TextView appDescriptionView = (TextView) appView.findViewById(R.id.appDescription);
+			appDescriptionView.setText(app.getDescription());
 		}
 
 	}
