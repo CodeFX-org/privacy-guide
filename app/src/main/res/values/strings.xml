@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">PrivacyGuide</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+	<string name="app_name">PrivacyGuide</string>
+	<string name="action_settings">Settings</string>
+	<string name="localizedAppIcon_contentDescription">The icon of the App.</string>
+	<string name="localizedAppDescription_defaultText">App Description</string>
+	<string name="localizedAppName_defaultText">App Name</string>
 
 </resources>
