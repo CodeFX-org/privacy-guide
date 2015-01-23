@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="AppStateUnknown">
+		<attr name="app_state_unknown" format="boolean"/>
+	</declare-styleable>
+	<declare-styleable name="AppStateUninstalled">
+		<attr name="app_state_uninstalled" format="boolean"/>
+	</declare-styleable>
+	<declare-styleable name="AppStateIgnored">
+		<attr name="app_state_ignored" format="boolean"/>
+	</declare-styleable>
+	<declare-styleable name="AppStateInstalled">
+		<attr name="app_state_installed" format="boolean"/>
+	</declare-styleable>
+</resources>

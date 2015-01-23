@@ -2,20 +2,19 @@ package org.codefx.privacyguide.view;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.codefx.privacyguide.R;
-import org.codefx.privacyguide.localized.LocalizedGuideManager;
 import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedGuide;
+import org.codefx.privacyguide.localized.LocalizedGuideManager;
 
 import java.util.List;
 
@@ -79,29 +78,15 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			View appView = provideAppView(convertView, parent);
-			writeAppToView(getItem(position), appView);
-			return appView;
+			AppItemView appItemView = AppItemView.provideAppItemView(PrivacyAppsActivity.this, convertView);
+			writeAppToView(getItem(position), appItemView);
+			return appItemView;
 		}
 
-		private View provideAppView(View convertView, ViewGroup parent) {
-			if (convertView != null)
-				return convertView;
-			return createNewAppView(parent);
-		}
-
-		private View createNewAppView(ViewGroup parent) {
-			return LayoutInflater
-					.from(PrivacyAppsActivity.this)
-					.inflate(R.layout.layout_app_item, parent, false);
-		}
-
-		private void writeAppToView(LocalizedApp app, View appView) {
-			TextView appNameView = (TextView) appView.findViewById(R.id.appName);
-			appNameView.setText(app.getName());
-
-			TextView appDescriptionView = (TextView) appView.findViewById(R.id.appDescription);
-			appDescriptionView.setText(app.getDescription());
+		private void writeAppToView(LocalizedApp app, AppItemView appItemView) {
+			appItemView.setAppName(app.getName());
+			appItemView.setAppDescription(app.getDescription());
+			appItemView.setAppState(app.getState());
 		}
 
 	}

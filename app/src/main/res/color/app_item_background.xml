@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+		  xmlns:custom="http://schemas.android.com/apk/res-auto">
+	<item custom:app_state_unknown="true" android:color="@color/red"/>
+	<item custom:app_state_uninstalled="true" android:color="@color/white"/>
+	<item custom:app_state_ignored="true" android:color="@color/grey"/>
+	<item custom:app_state_installed="true" android:color="@color/green"/>
+	<item android:color="@color/white"/>
+</selector>

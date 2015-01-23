@@ -1,8 +1,16 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-    </style>
+	<color name="white">#ffffffff</color>
+	<color name="grey">#ffbbbbbb</color>
+	<color name="blue_fairphone">#ff12a0df</color>
+	<color name="green">#ffa0df12</color>
+	<color name="red">#ffdf5112</color>
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="android:windowBackground">@color/blue_fairphone</item>
+		<!--<item name="android:windowBackground">@color/blue_fairphone</item>
+		<item name="android:colorBackground">@color/blue_fairphone</item>-->
+	</style>
 
 </resources>

@@ -30,4 +30,9 @@ public class LocalizedApp {
 	public void setState(LocalizedAppState state) {
 		this.state = state;
 	}
+
+	@Override
+	public String toString() {
+		return app.getName() + "[state: " + state + "]";
+	}
 }

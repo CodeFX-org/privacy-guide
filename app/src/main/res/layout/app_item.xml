@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="?android:attr/listPreferredItemHeight"
-	android:padding="6dip">
+				android:layout_width="fill_parent"
+				android:layout_height="?android:attr/listPreferredItemHeight"
+				android:padding="6dip"
+				android:background="@drawable/app_item">
 
 	<ImageView
 		android:id="@+id/appIcon"
@@ -11,7 +12,7 @@
 		android:layout_alignParentTop="true"
 		android:layout_marginEnd="6dip"
 		android:contentDescription="@string/localizedAppIcon_contentDescription"
-		android:src="@drawable/ic_launcher" />
+		android:src="@drawable/ic_launcher"/>
 
 	<TextView
 		android:id="@+id/appName"
@@ -22,7 +23,7 @@
 		android:layout_toEndOf="@id/appIcon"
 		android:gravity="center_vertical"
 		android:text="@string/localizedAppName_defaultText"
-		android:textSize="20sp" />
+		android:textSize="20sp"/>
 
 	<TextView
 		android:id="@+id/appDescription"
@@ -36,6 +37,6 @@
 		android:ellipsize="marquee"
 		android:singleLine="true"
 		android:text="@string/localizedAppDescription_defaultText"
-		android:textSize="14sp" />
+		android:textSize="14sp"/>
 
 </RelativeLayout>
