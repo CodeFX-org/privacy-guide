@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
 	   android:shape="rectangle">
-	<corners android:radius="@dimen/appItem_cornerRadius"/>
+	<corners android:radius="@dimen/appItem_defaultCornerRadius"/>
 	<solid android:color="@color/white"/>
-	<padding
-		android:left="@dimen/appItem_padding"
-		android:top="@dimen/appItem_padding"
-		android:right="@dimen/appItem_padding"
-		android:bottom="@dimen/appItem_padding"/>
 </shape>

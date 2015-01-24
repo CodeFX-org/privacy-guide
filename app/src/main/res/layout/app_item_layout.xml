@@ -1,22 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:padding="@dimen/appItem_padding"
-				android:background="@drawable/app_item_background">
+				android:paddingTop="@dimen/appItem_paddingVertical"
+				android:paddingBottom="@dimen/appItem_paddingVertical"
+				android:paddingStart="@dimen/appItem_paddingHorizontal"
+				android:paddingEnd="@dimen/appItem_paddingHorizontal">
 
 	<ImageView
 		android:id="@+id/appItem_appIconView"
 		android:layout_width="wrap_content"
 		android:layout_height="?android:attr/listPreferredItemHeight"
 		android:layout_alignParentTop="true"
-		android:layout_marginEnd="@dimen/appItem_elements_distance"
+		android:layout_marginEnd="@dimen/appItem_defaultDistance"
 		android:contentDescription="@string/appItem_icon_contentDescription"
 		android:src="@drawable/ic_launcher"/>
 
 	<TextView
 		android:id="@+id/appItem_appNameView"
 		android:layout_width="fill_parent"
-		android:layout_height="38sp"
+		android:layout_height="@dimen/appItem_appName_height"
 		android:layout_alignParentTop="true"
 		android:layout_alignParentEnd="true"
 		android:layout_toEndOf="@id/appItem_appIconView"
@@ -42,6 +44,7 @@
 	<TextView
 		android:id="@+id/appItem_appDescriptionView"
 		android:layout_below="@id/appItem_appIconView"
+		android:layout_marginTop="@dimen/appItem_defaultDistance"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignParentStart="true"
@@ -52,10 +55,10 @@
 
 	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 					android:id="@+id/appItem_stateContainer"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
 					android:layout_below="@id/appItem_appDescriptionView"
-					android:layout_marginTop="@dimen/appItem_elements_distance">
+					android:layout_marginTop="@dimen/appItem_defaultDistance"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content">
 	</FrameLayout>
 
 </RelativeLayout>

@@ -30,6 +30,10 @@ public class LocalizedApp {
 		return app.getDescription();
 	}
 
+	public String getSummary() {
+		return app.getSummary();
+	}
+
 	/** @return the installers as an unmodifiable list */
 	public List<Installer> getInstallers() {
 		return app.getInstallers();

@@ -1,7 +1,5 @@
 package org.codefx.privacyguide.guide;
 
-import android.animation.AnimatorSet;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,6 +12,7 @@ public class App {
 
 	private final String name;
 	private final String packageName;
+	private final String summary;
 	private final String description;
 	/** unmodifiable list of installers */
 	private final List<Installer> installers;
@@ -21,6 +20,7 @@ public class App {
 	private App(Builder builder) {
 		this.name = builder.name;
 		this.packageName = builder.packageName;
+		this.summary = builder.summary;
 		this.description = builder.description;
 		this.installers = builder.installers;
 	}
@@ -35,6 +35,10 @@ public class App {
 
 	public String getPackageName() {
 		return packageName;
+	}
+
+	public String getSummary() {
+		return summary;
 	}
 
 	public String getDescription() {
@@ -59,6 +63,7 @@ public class App {
 
 		private String name;
 		private String packageName;
+		private String summary;
 		private String description;
 		private List<Installer> installers;
 
@@ -74,6 +79,11 @@ public class App {
 
 		public Builder packageName(String packageName) {
 			this.packageName = packageName;
+			return this;
+		}
+
+		public Builder summary(String summary) {
+			this.summary = summary;
 			return this;
 		}
 
@@ -99,11 +109,18 @@ public class App {
 		}
 
 		public App build() {
-			if (name == null || packageName == null || description == null)
+			if (isAnyNull(name, packageName, summary, description))
 				throw new IllegalStateException(
-						"Name, package name and description must be set before an app can be built.");
+						"Name, package name, summary and description must be set before an app can be built.");
 
 			return new App(this);
+		}
+
+		private static boolean isAnyNull(Object... objects) {
+			for (Object object : objects)
+				if (object == null)
+					return true;
+			return false;
 		}
 
 	}

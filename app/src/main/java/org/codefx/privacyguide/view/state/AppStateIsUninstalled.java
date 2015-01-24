@@ -7,31 +7,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ScrollView;
 
 import org.codefx.privacyguide.R;
 import org.codefx.privacyguide.guide.Installer;
 import org.codefx.privacyguide.localized.LocalizedApp;
 
-class AppStateIsUninstalled extends ScrollView {
+class AppStateIsUninstalled implements ViewContainer {
+
+	private final View stateView;
 
 	public AppStateIsUninstalled(Context context, LocalizedApp app) {
-		super(context);
-		createView(context);
+		stateView = createView(context);
 		createButtons(context, app);
 	}
 
-	private void createView(Context context) {
-		LayoutInflater
+	private View createView(Context context) {
+		return LayoutInflater
 				.from(context)
-				.inflate(R.layout.app_item_state_uninstalled, this, true);
+				.inflate(R.layout.app_item_state_uninstalled, null);
 	}
 
 	private void createButtons(Context context, LocalizedApp app) {
 		if (app.getInstallers().size() == 0)
 			throw new IllegalArgumentException("Do not create an empty installer button bar. Show a message instead.");
 
-		ViewGroup buttonContainer = (ViewGroup) findViewById(R.id.appItem_stateUninstalled_buttonContainer);
+		ViewGroup buttonContainer = (ViewGroup) stateView.findViewById(R.id.appItem_stateUninstalled_buttonContainer);
 		for (Installer installer : app.getInstallers()) {
 			Button button = createButton(context, installer);
 			buttonContainer.addView(button);
@@ -44,7 +44,7 @@ class AppStateIsUninstalled extends ScrollView {
 				.inflate(R.layout.app_item_state_uninstalled_install_button, null);
 
 		button.setText(installer.getStore().getName());
-		button.setOnClickListener(new OnClickListener() {
+		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse(installer.getLink()));
@@ -55,4 +55,8 @@ class AppStateIsUninstalled extends ScrollView {
 		return button;
 	}
 
+	@Override
+	public View getView() {
+		return stateView;
+	}
 }

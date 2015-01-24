@@ -17,16 +17,16 @@ public abstract class AppItemStateViews {
 	public static View getViewForState(Context context, LocalizedApp app) {
 		switch (app.getState()) {
 			case UNKNOWN:
-				return new AppStateIsUnknown(context, app);
+				return new AppStateIsUnknown(context, app).getView();
 			case UNINSTALLED:
 				if (app.getInstallers().size() == 0)
-					return new AppStateIsUninstalledButNoInstallers(context, app);
+					return new AppStateIsUninstalledButNoInstallers(context, app).getView();
 				else
-					return new AppStateIsUninstalled(context, app);
+					return new AppStateIsUninstalled(context, app).getView();
 			case INSTALLED:
-				return new AppStateIsInstalled(context, app);
+				return new AppStateIsInstalled(context, app).getView();
 			default:
-				return new AppStateIsUnknown(context, app);
+				return new AppStateIsUnknown(context, app).getView();
 		}
 	}
 

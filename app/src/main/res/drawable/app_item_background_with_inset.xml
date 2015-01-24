@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<inset
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:drawable="@drawable/app_item_background"
-	android:insetTop="@dimen/appItem_marginTop"
-	android:insetRight="@dimen/appItem_marginRight"
-	android:insetBottom="@dimen/appItem_marginBottom"
-	android:insetLeft="@dimen/appItem_marginLeft"/>
-

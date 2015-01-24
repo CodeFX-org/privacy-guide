@@ -2,24 +2,25 @@ package org.codefx.privacyguide.view.state;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
+import android.view.View;
 import android.widget.TextView;
 
 import org.codefx.privacyguide.R;
 import org.codefx.privacyguide.localized.LocalizedApp;
 
-abstract class MessageView extends LinearLayout {
+abstract class MessageViewContainer implements ViewContainer {
 
-	public MessageView(Context context, LocalizedApp app, int messageTextId) {
-		super(context);
-		createView(context);
+	private final View messageView;
+
+	public MessageViewContainer(Context context, LocalizedApp app, int messageTextId) {
+		messageView = createView(context);
 		showMessage(context, app, messageTextId);
 	}
 
-	private void createView(Context context) {
-		LayoutInflater
+	private View createView(Context context) {
+		return LayoutInflater
 				.from(context)
-				.inflate(R.layout.app_item_state_message, this, true);
+				.inflate(R.layout.app_item_state_message, null);
 	}
 
 	private void showMessage(Context context, LocalizedApp app, int messageTextId) {
@@ -36,8 +37,12 @@ abstract class MessageView extends LinearLayout {
 	}
 
 	private void setMessage(String message) {
-		TextView textView = (TextView) findViewById(R.id.appItem_stateMessage_textView);
+		TextView textView = (TextView) messageView.findViewById(R.id.appItem_stateMessage_textView);
 		textView.setText(message);
 	}
 
+	@Override
+	public View getView() {
+		return messageView;
+	}
 }
