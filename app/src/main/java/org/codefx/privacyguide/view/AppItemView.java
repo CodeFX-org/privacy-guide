@@ -1,12 +1,12 @@
 package org.codefx.privacyguide.view;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,11 +17,6 @@ import org.codefx.privacyguide.localized.LocalizedAppState;
 public class AppItemView extends RelativeLayout {
 
 	private static final int paddingInDip = 6;
-
-	private static final int[] STATE_UNKNOWN = {R.attr.app_state_unknown};
-	private static final int[] STATE_UNINSTALLED = {R.attr.app_state_uninstalled};
-	private static final int[] STATE_IGNORED = {R.attr.app_state_ignored};
-	private static final int[] STATE_INSTALLED = {R.attr.app_state_installed};
 
 	private final ImageView iconView;
 	private final TextView nameView;
@@ -77,27 +72,24 @@ public class AppItemView extends RelativeLayout {
 	 * DRAW STATE
 	 */
 
-	@Override
-	protected int[] onCreateDrawableState(int extraSpace) {
-		final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
-		mergeDrawableStates(drawableState, state);
-		return drawableState;
+	private void updateViewToCurrentState() {
+		int color = getColorForState(state);
+		// TODO this looks more promising but has the same limited effect
+//		Drawable background = ((InsetDrawable) getBackground()).getDrawable();
+		Drawable background = getBackground();
+		background.setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 	}
 
-	private static void mergeDrawableStates(int[] drawableState, LocalizedAppState state) {
+	private int getColorForState(LocalizedAppState state) {
 		switch (state) {
 			case UNKNOWN:
-				mergeDrawableStates(drawableState, STATE_UNKNOWN);
-				break;
+				return getResources().getColor(R.color.app_state_unknown);
 			case UNINSTALLED:
-				mergeDrawableStates(drawableState, STATE_UNINSTALLED);
-				break;
+				return getResources().getColor(R.color.app_state_uninstalled);
 			case IGNORED:
-				mergeDrawableStates(drawableState, STATE_IGNORED);
-				break;
+				return getResources().getColor(R.color.app_state_ignored);
 			case INSTALLED:
-				mergeDrawableStates(drawableState, STATE_INSTALLED);
-				break;
+				return getResources().getColor(R.color.app_state_installed);
 			default:
 				throw new IllegalArgumentException(
 						"Unknown " + LocalizedAppState.class.getSimpleName() + ": " + state + ".");
@@ -121,7 +113,7 @@ public class AppItemView extends RelativeLayout {
 			return;
 
 		this.state = state;
-		refreshDrawableState();
+		updateViewToCurrentState();
 	}
 
 }

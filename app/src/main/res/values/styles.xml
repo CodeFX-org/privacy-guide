@@ -6,6 +6,11 @@
 	<color name="green">#ffa0df12</color>
 	<color name="red">#ffdf5112</color>
 
+	<color name="app_state_unknown">#ffdf5112</color>
+	<color name="app_state_uninstalled">#ffffffff</color>
+	<color name="app_state_ignored">#ffbbbbbb</color>
+	<color name="app_state_installed">#ffa0df12</color>
+
 	<!-- Base application theme. -->
 	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 		<item name="android:windowBackground">@color/blue_fairphone</item>
