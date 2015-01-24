@@ -22,6 +22,10 @@ public class LocalizedApp {
 		return app.getName();
 	}
 
+	public String getPackageName() {
+		return app.getPackageName();
+	}
+
 	public String getDescription() {
 		return app.getDescription();
 	}
