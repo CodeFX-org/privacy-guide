@@ -17,9 +17,12 @@ import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedAppState;
 import org.codefx.privacyguide.view.state.AppItemStateViews;
 
+import java.util.IdentityHashMap;
+
 public class AppItemView extends FrameLayout {
 
-	private static final int paddingInDip = 6;
+	/* TODO create a cleaner implementation */
+	private static IdentityHashMap<LocalizedApp, AppUiState> appUiStates = new IdentityHashMap<>();
 
 	private final ViewGroup appItemView;
 	private final Drawable background;
@@ -32,7 +35,7 @@ public class AppItemView extends FrameLayout {
 	private View stateView;
 
 	private LocalizedApp app;
-	private boolean expanded;
+	private AppUiState appUiState;
 
 	/*
 	 * CONSTRUCTION
@@ -86,11 +89,12 @@ public class AppItemView extends FrameLayout {
 	 */
 
 	private void updateView() {
-		setBackgroundColor();
-		setStateView();
+		updateBackgroundColor();
+		updateStateView();
+		updateExpansion();
 	}
 
-	private void setBackgroundColor() {
+	private void updateBackgroundColor() {
 		int color = getColorForState(app.getState());
 		background.setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 	}
@@ -111,11 +115,29 @@ public class AppItemView extends FrameLayout {
 		}
 	}
 
-	private void setStateView() {
+	private void updateStateView() {
 		if (stateView != null)
 			stateContainer.removeAllViews();
 		stateView = AppItemStateViews.getViewForState(getContext(), app);
 		stateContainer.addView(stateView);
+	}
+
+	private void updateExpansion() {
+		if (appUiState.expanded) {
+			descriptionView.setVisibility(VISIBLE);
+			stateContainer.setVisibility(VISIBLE);
+		} else {
+			descriptionView.setVisibility(GONE);
+		stateContainer.setVisibility(GONE);
+		}
+	}
+
+	private void expand() {
+		updateExpansion();
+	}
+
+	private void collapse() {
+		updateExpansion();
 	}
 
 	/*
@@ -124,6 +146,9 @@ public class AppItemView extends FrameLayout {
 
 	public void showApp(LocalizedApp app) {
 		this.app = app;
+		if (!appUiStates.containsKey(app))
+			appUiStates.put(app, new AppUiState());
+		this.appUiState = appUiStates.get(app);
 
 		nameView.setText(app.getName());
 		summaryView.setText(app.getSummary());
@@ -132,20 +157,20 @@ public class AppItemView extends FrameLayout {
 		updateView();
 	}
 
-	public void expand() {
-		if (expanded)
-			return;
-
-		expanded = true;
-		updateView();
+	public void expandOrCollapse() {
+		appUiState.expanded = !appUiState.expanded;
+		if (appUiState.expanded)
+			expand();
+		else
+			collapse();
 	}
 
-	public void contract() {
-		if (!expanded)
-			return;
+	/*
+	 * NESTED CLASSES
+	 */
 
-		expanded = false;
-		updateView();
+	private static class AppUiState {
+		public boolean expanded = false;
 	}
 
 }

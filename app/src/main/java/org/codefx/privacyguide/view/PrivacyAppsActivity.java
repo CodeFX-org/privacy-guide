@@ -1,7 +1,5 @@
 package org.codefx.privacyguide.view;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -13,13 +11,11 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import org.codefx.privacyguide.R;
-import org.codefx.privacyguide.guide.Installer;
 import org.codefx.privacyguide.install.InstallationManager;
 import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedGuide;
 import org.codefx.privacyguide.localized.LocalizedGuideManager;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class PrivacyAppsActivity extends ActionBarActivity {
@@ -36,7 +32,6 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 		AppListAdapter appListAdapter = new AppListAdapter(guide.getLocalizedApps());
 		ListView appList = (ListView) findViewById(R.id.appListView);
 		appList.setAdapter(appListAdapter);
-		appList.setOnItemClickListener(new AppListClickListener(appListAdapter));
 	}
 
 	@Override
@@ -88,22 +83,17 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			AppItemView appItemView = AppItemView.provideAppItemView(PrivacyAppsActivity.this, convertView);
 			appItemView.showApp(getItem(position));
+			appItemView.setOnClickListener(new AppListItemClickListener());
 			return appItemView;
 		}
 
 	}
 
-	private class AppListClickListener implements AdapterView.OnItemClickListener {
-
-		private final AppListAdapter appListAdapter;
-
-		private AppListClickListener(AppListAdapter appListAdapter) {
-			this.appListAdapter = appListAdapter;
-		}
+	private class AppListItemClickListener implements AdapterView.OnClickListener {
 
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			// TODO expand/collapse
+		public void onClick(View view) {
+			((AppItemView) view).expandOrCollapse();
 		}
 	}
 
