@@ -6,13 +6,13 @@
 			  android:background="@drawable/app_item_state_unknown_background">
 
 	<TextView
-		android:id="@+id/appItem_unknownState_textView"
+		android:id="@+id/appItem_stateMessage_textView"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="0dp"
 		android:layout_weight="1"
 		android:gravity="center_vertical|center_horizontal"
-		android:text="@string/appItem_unknownState_defaultText"
-		android:textSize="@dimen/appItem_unknownState_textSize"
+		android:text="@string/appItem_stateMessage_defaultText"
+		android:textSize="@dimen/appItem_stateMessage_textSize"
 		android:textAlignment="center"/>
 
 </LinearLayout>

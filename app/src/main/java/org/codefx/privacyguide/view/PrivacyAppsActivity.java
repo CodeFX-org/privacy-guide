@@ -103,13 +103,7 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			LocalizedApp app = appListAdapter.getItem(position);
-			Iterator<Installer> installers = app.getInstallers().iterator();
-			if (installers.hasNext()) {
-				Installer installer = installers.next();
-				Intent goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse(installer.getLink()));
-				PrivacyAppsActivity.this.startActivity(goToMarket);
-			}
+			// TODO expand/collapse
 		}
 	}
 

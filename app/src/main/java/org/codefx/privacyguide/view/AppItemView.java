@@ -13,6 +13,7 @@ import android.widget.TextView;
 import org.codefx.privacyguide.R;
 import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedAppState;
+import org.codefx.privacyguide.view.state.AppItemStateViews;
 
 public class AppItemView extends RelativeLayout {
 

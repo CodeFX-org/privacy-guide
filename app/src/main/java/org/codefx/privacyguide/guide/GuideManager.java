@@ -8,6 +8,7 @@ public class GuideManager {
 	public static final Guide singletonGuide;
 
 	static {
+		Store downloadApk = new Store("Download APK");
 		Store googlePlay = new Store("Google Play");
 		App[] apps = new App[]{
 				App.build("F-Droid")
@@ -40,6 +41,9 @@ public class GuideManager {
 				App.build("Orbot")
 						.packageName("org.torproject.android")
 						.description("Tor client for Android.")
+						.installers(
+								new Installer(downloadApk, "https://guardianproject.info/releases/orbot-latest.apk"),
+								new Installer(googlePlay, "market://details?id=org.torproject.android"))
 						.build(),
 				App.build("TextSecure")
 						.packageName("org.thoughtcrime.securesms")

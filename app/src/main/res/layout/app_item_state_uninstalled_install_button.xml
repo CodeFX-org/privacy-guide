@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/appItem_stateUninstalled_installButton"
+		android:layout_width="wrap_content"
+		android:layout_height="75dip"
+		android:minWidth="75dip"
+		android:maxWidth="100dip"
+		android:background="@drawable/app_item_state_uninstalled_install_button_background"
+		android:gravity="center_vertical|center_horizontal"
+		android:drawableTop="@drawable/ic_launcher"
+		android:text="@string/appItem_stateUninstalled_installButton_defaultText"
+		android:textAllCaps="false"
+		android:textSize="@dimen/appItem_stateUninstalled_button_textSize"
+		android:textAlignment="center"
+		android:ellipsize="marquee"
+		android:singleLine="true"
+	/>

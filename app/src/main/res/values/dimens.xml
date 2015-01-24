@@ -12,6 +12,7 @@
 	<dimen name="appItem_appName_textSize">20sp</dimen>
 	<dimen name="appItem_appSummary_textSize">16sp</dimen>
 	<dimen name="appItem_appDescription_textSize">12sp</dimen>
-	<dimen name="appItem_unknownState_textSize">14sp</dimen>
-	<dimen name="appItem_unknownState_textPadding">6dip</dimen>
+	<dimen name="appItem_stateMessage_textSize">14sp</dimen>
+	<dimen name="appItem_stateUninstalled_button_textSize">12sp</dimen>
+	<dimen name="appItem_stateUninstalled_buttons_padding">6dip</dimen>
 </resources>
