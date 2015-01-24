@@ -1,6 +1,9 @@
 package org.codefx.privacyguide.localized;
 
 import org.codefx.privacyguide.guide.App;
+import org.codefx.privacyguide.guide.Installer;
+
+import java.util.List;
 
 /**
  * Wraps an {@link App} in local context which defines in what {@link LocalizedAppState} the app is on this system.
@@ -21,6 +24,11 @@ public class LocalizedApp {
 
 	public String getDescription() {
 		return app.getDescription();
+	}
+
+	/** @return the installers as an unmodifiable list */
+	public List<Installer> getInstallers() {
+		return app.getInstallers();
 	}
 
 	public LocalizedAppState getState() {

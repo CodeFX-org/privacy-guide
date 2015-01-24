@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Guide {
 
-	/* unmodifiable list of apps */
+	/** unmodifiable list of apps */
 	private final List<App> apps;
 
 	/**

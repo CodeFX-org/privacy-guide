@@ -1,5 +1,7 @@
 package org.codefx.privacyguide.view;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -8,14 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import org.codefx.privacyguide.R;
+import org.codefx.privacyguide.guide.Installer;
 import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedGuide;
 import org.codefx.privacyguide.localized.LocalizedGuideManager;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class PrivacyAppsActivity extends ActionBarActivity {
@@ -26,9 +29,10 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_privacy_apps);
 
 		LocalizedGuide guide = LocalizedGuideManager.singletonGuide;
-		ListAdapter appListAdapter = new AppListAdapter(guide.getLocalizedApps());
+		AppListAdapter appListAdapter = new AppListAdapter(guide.getLocalizedApps());
 		ListView appList = (ListView) findViewById(R.id.appListView);
 		appList.setAdapter(appListAdapter);
+		appList.setOnItemClickListener(new AppListClickListener(appListAdapter));
 	}
 
 	@Override
@@ -89,6 +93,26 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 			appItemView.setAppState(app.getState());
 		}
 
+	}
+
+	private class AppListClickListener implements AdapterView.OnItemClickListener {
+
+		private final AppListAdapter appListAdapter;
+
+		private AppListClickListener(AppListAdapter appListAdapter) {
+			this.appListAdapter = appListAdapter;
+		}
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			LocalizedApp app = appListAdapter.getItem(position);
+			Iterator<Installer> installers = app.getInstallers().iterator();
+			if (installers.hasNext()) {
+				Installer installer = installers.next();
+				Intent goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse(installer.getLink()));
+				PrivacyAppsActivity.this.startActivity(goToMarket);
+			}
+		}
 	}
 
 }
