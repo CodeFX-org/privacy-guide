@@ -2,10 +2,14 @@
 	<!-- Default screen margins, per the Android Design guidelines. -->
 	<dimen name="activity_horizontal_margin">16dip</dimen>
 	<dimen name="activity_vertical_margin">16dip</dimen>
-	<dimen name="app_item_padding">3dip</dimen>
-	<dimen name="app_item_corner_radius">6dip</dimen>
-	<dimen name="app_item_inset_top">6dip</dimen>
-	<dimen name="app_item_inset_bottom">6dip</dimen>
-	<dimen name="app_item_inset_left">12dip</dimen>
-	<dimen name="app_item_inset_right">12dip</dimen>
+	<dimen name="appItem_padding">3dip</dimen>
+	<dimen name="appItem_cornerRadius">6dip</dimen>
+	<dimen name="appItem_marginTop">6dip</dimen>
+	<dimen name="appItem_marginBottom">6dip</dimen>
+	<dimen name="appItem_marginLeft">12dip</dimen>
+	<dimen name="appItem_marginRight">12dip</dimen>
+	<dimen name="appItem_icon_marginEnd">6dip</dimen>
+	<dimen name="appItem_appName_textSize">20sp</dimen>
+	<dimen name="appItem_appSummary_textSize">14sp</dimen>
+	<dimen name="appItem_appDescription_textSize">12sp</dimen>
 </resources>

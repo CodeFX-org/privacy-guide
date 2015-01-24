@@ -14,8 +14,6 @@
 	<!-- Base application theme. -->
 	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 		<item name="android:windowBackground">@color/blue_fairphone</item>
-		<!--<item name="android:windowBackground">@color/blue_fairphone</item>
-		<item name="android:colorBackground">@color/blue_fairphone</item>-->
 	</style>
 
 </resources>

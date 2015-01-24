@@ -44,28 +44,16 @@ public class AppItemView extends RelativeLayout {
 		super(context);
 		createView();
 
-		iconView = (ImageView) findViewById(R.id.appIcon);
-		nameView = (TextView) findViewById(R.id.appName);
-		descriptionView = (TextView) findViewById(R.id.appDescription);
+		iconView = (ImageView) findViewById(R.id.appItem_appIconView);
+		nameView = (TextView) findViewById(R.id.appItem_appNameView);
+		descriptionView = (TextView) findViewById(R.id.appItem_appDescriptionView);
 	}
 
 	private void createView() {
 		LayoutInflater
 				.from(getContext())
-				.inflate(R.layout.app_item, this, true);
-		setBackgroundResource(R.drawable.app_item_inset);
-	}
-
-	private static int getListPreferredItemHeight(Context context) {
-		TypedValue value = new TypedValue();
-		context.getTheme().resolveAttribute(android.R.attr.listPreferredItemHeight, value, true);
-		DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-		return TypedValue.complexToDimensionPixelSize(value.data, metrics);
-	}
-
-	private static int dipToPixels(int dip, Context context) {
-		DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, displayMetrics);
+				.inflate(R.layout.app_item_layout, this, true);
+		setBackgroundResource(R.drawable.app_item_background_drawable_with_inset);
 	}
 
 	/*
