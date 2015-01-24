@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import org.codefx.privacyguide.R;
 import org.codefx.privacyguide.guide.Installer;
+import org.codefx.privacyguide.install.InstallationManager;
 import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedGuide;
 import org.codefx.privacyguide.localized.LocalizedGuideManager;
@@ -23,12 +24,15 @@ import java.util.List;
 
 public class PrivacyAppsActivity extends ActionBarActivity {
 
+	private InstallationManager installationManager;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_privacy_apps);
 
-		LocalizedGuide guide = LocalizedGuideManager.singletonGuide;
+		installationManager = new InstallationManager(getPackageManager());
+		LocalizedGuide guide = LocalizedGuideManager.getSingletonGuide(installationManager);
 		AppListAdapter appListAdapter = new AppListAdapter(guide.getLocalizedApps());
 		ListView appList = (ListView) findViewById(R.id.appListView);
 		appList.setAdapter(appListAdapter);

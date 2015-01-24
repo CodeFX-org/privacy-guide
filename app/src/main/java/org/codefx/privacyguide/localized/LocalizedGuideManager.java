@@ -2,7 +2,7 @@ package org.codefx.privacyguide.localized;
 
 import org.codefx.privacyguide.guide.Guide;
 import org.codefx.privacyguide.guide.GuideManager;
-import org.codefx.privacyguide.install.RandomAppStateDiscovery;
+import org.codefx.privacyguide.install.AppStateDiscovery;
 
 /**
  * Discovers available {@link Guide guides}, localizes them to this system and makes them available to the rest of this
@@ -10,10 +10,13 @@ import org.codefx.privacyguide.install.RandomAppStateDiscovery;
  */
 public class LocalizedGuideManager {
 
-	public static final LocalizedGuide singletonGuide;
+	private static LocalizedGuide singletonGuide;
 
-	static {
-		singletonGuide = new LocalizedGuide(GuideManager.singletonGuide, new RandomAppStateDiscovery());
+	/** not thread safe! */
+	public static LocalizedGuide getSingletonGuide(AppStateDiscovery discovery) {
+		if (singletonGuide == null)
+			singletonGuide = new LocalizedGuide(GuideManager.singletonGuide, discovery);
+		return singletonGuide;
 	}
 
 }
