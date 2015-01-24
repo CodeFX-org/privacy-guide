@@ -17,5 +17,8 @@
 		The app ${appName} is not installed and this guide provides no installers.
 	</string>
 	<string name="appItem_stateUninstalled_installButton_defaultText">Install via store</string>
+	<string name="appItem_stateInstalled_displayText">
+		The app ${appName} is already installed.
+	</string>
 
 </resources>

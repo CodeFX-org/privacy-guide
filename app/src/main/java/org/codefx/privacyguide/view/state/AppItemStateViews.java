@@ -23,6 +23,8 @@ public abstract class AppItemStateViews {
 					return new AppStateIsUninstalledButNoInstallers(context, app);
 				else
 					return new AppStateIsUninstalled(context, app);
+			case INSTALLED:
+				return new AppStateIsInstalled(context, app);
 			default:
 				return new AppStateIsUnknown(context, app);
 		}
