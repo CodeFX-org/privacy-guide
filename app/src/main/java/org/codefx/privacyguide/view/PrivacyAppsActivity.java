@@ -87,14 +87,8 @@ public class PrivacyAppsActivity extends ActionBarActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			AppItemView appItemView = AppItemView.provideAppItemView(PrivacyAppsActivity.this, convertView);
-			writeAppToView(getItem(position), appItemView);
+			appItemView.showApp(getItem(position));
 			return appItemView;
-		}
-
-		private void writeAppToView(LocalizedApp app, AppItemView appItemView) {
-			appItemView.setAppName(app.getName());
-			appItemView.setAppDescription(app.getDescription());
-			appItemView.setAppState(app.getState());
 		}
 
 	}

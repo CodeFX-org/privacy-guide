@@ -9,6 +9,8 @@
 	<string name="appItem_appSummary_defaultText">App Summary</string>
 	<string name="appItem_appDescription_defaultText">App Description</string>
 
-	<string name="appItem_stateUnknown_displayText">The state of the app ${appName} (${appPackageName}) is unknown.</string>
+	<string name="appItem_stateUnknown_displayText">The state of the app ${appName} (${appPackageName}) is
+		unknown.</string>
+	<string name="appItem_unknownState_defaultText">App is in an unknown state.</string>
 
 </resources>

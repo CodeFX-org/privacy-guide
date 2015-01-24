@@ -3,15 +3,15 @@ package org.codefx.privacyguide.view;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.codefx.privacyguide.R;
+import org.codefx.privacyguide.localized.LocalizedApp;
 import org.codefx.privacyguide.localized.LocalizedAppState;
 
 public class AppItemView extends RelativeLayout {
@@ -21,8 +21,11 @@ public class AppItemView extends RelativeLayout {
 	private final ImageView iconView;
 	private final TextView nameView;
 	private final TextView descriptionView;
+	private final ViewGroup stateContainer;
+	private View stateView;
 
-	private LocalizedAppState state;
+	private LocalizedApp app;
+	private boolean expanded;
 
 	/*
 	 * CONSTRUCTION
@@ -47,21 +50,27 @@ public class AppItemView extends RelativeLayout {
 		iconView = (ImageView) findViewById(R.id.appItem_appIconView);
 		nameView = (TextView) findViewById(R.id.appItem_appNameView);
 		descriptionView = (TextView) findViewById(R.id.appItem_appDescriptionView);
+		stateContainer = (ViewGroup) findViewById(R.id.appItem_stateContainer);
 	}
 
 	private void createView() {
 		LayoutInflater
 				.from(getContext())
 				.inflate(R.layout.app_item_layout, this, true);
-		setBackgroundResource(R.drawable.app_item_background_drawable_with_inset);
+		setBackgroundResource(R.drawable.app_item_background_with_inset);
 	}
 
 	/*
 	 * DRAW STATE
 	 */
 
-	private void updateViewToCurrentState() {
-		int color = getColorForState(state);
+	private void updateView() {
+		setBackgroundColor();
+		setStateView();
+	}
+
+	private void setBackgroundColor() {
+		int color = getColorForState(app.getState());
 		// TODO this looks more promising but has the same limited effect
 //		Drawable background = ((InsetDrawable) getBackground()).getDrawable();
 		Drawable background = getBackground();
@@ -84,24 +93,40 @@ public class AppItemView extends RelativeLayout {
 		}
 	}
 
+	private void setStateView() {
+		if (stateView != null)
+			stateContainer.removeAllViews();
+		stateView = AppItemStateViews.getViewForState(getContext(), app);
+		stateContainer.addView(stateView);
+	}
+
 	/*
 	 * MUTATORS
 	 */
 
-	public void setAppName(String name) {
-		nameView.setText(name);
+	public void showApp(LocalizedApp app) {
+		this.app = app;
+
+		nameView.setText(app.getName());
+		descriptionView.setText(app.getDescription());
+
+		updateView();
 	}
 
-	public void setAppDescription(String description) {
-		descriptionView.setText(description);
-	}
-
-	public void setAppState(LocalizedAppState state) {
-		if (this.state == state)
+	public void expand() {
+		if (expanded)
 			return;
 
-		this.state = state;
-		updateViewToCurrentState();
+		expanded = true;
+		updateView();
+	}
+
+	public void contract() {
+		if (!expanded)
+			return;
+
+		expanded = false;
+		updateView();
 	}
 
 }

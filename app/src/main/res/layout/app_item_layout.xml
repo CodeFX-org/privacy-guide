@@ -2,24 +2,25 @@
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:padding="@dimen/appItem_padding"
-				android:background="@drawable/app_item_background_drawable">
+				android:background="@drawable/app_item_background">
 
 	<ImageView
 		android:id="@+id/appItem_appIconView"
 		android:layout_width="wrap_content"
 		android:layout_height="?android:attr/listPreferredItemHeight"
 		android:layout_alignParentTop="true"
-		android:layout_marginEnd="@dimen/appItem_icon_marginEnd"
+		android:layout_marginEnd="@dimen/appItem_elements_distance"
 		android:contentDescription="@string/appItem_icon_contentDescription"
 		android:src="@drawable/ic_launcher"/>
 
 	<TextView
 		android:id="@+id/appItem_appNameView"
 		android:layout_width="fill_parent"
-		android:layout_height="32sp"
+		android:layout_height="38sp"
 		android:layout_alignParentTop="true"
 		android:layout_alignParentEnd="true"
 		android:layout_toEndOf="@id/appItem_appIconView"
+		android:gravity="center_vertical"
 		android:ellipsize="marquee"
 		android:singleLine="true"
 		android:text="@string/appItem_appName_defaultText"
@@ -46,9 +47,15 @@
 		android:layout_alignParentStart="true"
 		android:layout_alignParentEnd="true"
 		android:gravity="center_vertical"
-		android:ellipsize="marquee"
-		android:singleLine="true"
 		android:text="@string/appItem_appDescription_defaultText"
 		android:textSize="@dimen/appItem_appDescription_textSize"/>
+
+	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					android:id="@+id/appItem_stateContainer"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/appItem_appDescriptionView"
+					android:layout_marginTop="@dimen/appItem_elements_distance">
+	</FrameLayout>
 
 </RelativeLayout>
