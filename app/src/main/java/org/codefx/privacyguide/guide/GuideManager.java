@@ -19,22 +19,30 @@ public class GuideManager {
 						.packageName("org.fdroid.fdroid")
 						.summary("Alternative app store for FOSS.")
 						.description(loremIpsum)
+						.installers(
+								new Installer(downloadApk, "https://f-droid.org/FDroid.apk"))
 						.build(),
 				App.build("Super-SU")
 						.packageName("eu.chainfire.supersu")
 						.summary("Manages apps with superuser rights.")
 						.description(loremIpsum)
+						.installers(
+								new Installer(googlePlay, "market://details?id=eu.chainfire.supersu"))
 						.build(),
 				App.build("X-Privacy")
-						.packageName("de.robv.android.xposed.installer")
+						.packageName("biz.bokhorst.xprivacy.installer")
 						.summary("Defines fine-grained app permissions.")
 						.description(loremIpsum)
+						.installers(
+								new Installer(googlePlay, "market://details?id=biz.bokhorst.xprivacy.installer"))
 						.build(),
 				App.build("DroidWall")
 						.packageName("com.googlecode.droidwall.free")
 						.summary("Limits internet access for apps.")
 						.description(loremIpsum)
-						.installers(new Installer(googlePlay, "market://details?id=com.googlecode.droidwall.free"))
+						.installers(
+								new Installer(downloadApk, "https://droidwall.googlecode.com/files/droidwall-v1_5_7.apk"),
+								new Installer(googlePlay, "market://details?id=com.googlecode.droidwall.free"))
 						.build(),
 				App.build("AdAway")
 						.packageName("org.adaway")
@@ -45,6 +53,8 @@ public class GuideManager {
 						.packageName("de.defim.apk.bootmanager")
 						.summary("Defines which apps are started on boot.")
 						.description(loremIpsum)
+						.installers(
+								new Installer(googlePlay, "market://details?id=de.defim.apk.bootmanager"))
 						.build(),
 				App.build("Orbot")
 						.packageName("org.torproject.android")
@@ -58,11 +68,15 @@ public class GuideManager {
 						.packageName("org.thoughtcrime.securesms")
 						.summary("Secure messaging app.")
 						.description(loremIpsum)
+						.installers(
+								new Installer(googlePlay, "market://details?id=org.thoughtcrime.securesms"))
 						.build(),
 				App.build("RedPhone")
 						.packageName("org.thoughtcrime.redphone")
 						.summary("Secure phone app.")
 						.description(loremIpsum)
+						.installers(
+								new Installer(googlePlay, "market://details?id=org.thoughtcrime.redphone"))
 						.build(),
 		};
 		singletonGuide = new Guide(apps);
